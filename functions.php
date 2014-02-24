@@ -5,6 +5,33 @@
  * @package Frimi
  */
 
+global $Frimi;
+if (!is_array($Frimi)) {
+   $Frimi = array(
+      "site.private" => 1,
+      );
+}
+
+if (! function_exists('frimi')):
+   function frimi ($var) {
+      global $Frimi;
+      $res="";
+      if (isset($Frimi[$var])) 
+         $res = $Frimi[$var];
+      return $res;
+   }
+endif;
+
+if (! function_exists('frimi_check_private')):
+   function frimi_check_private () {
+      $user = wp_get_current_user();
+      $uid = $user->ID;
+      if ($uid == 0) {
+         wp_die();
+      }
+   };
+endif;
+
 /**
  * Set the content width based on the theme's design and stylesheet.
  */
@@ -56,6 +83,9 @@ function frimi_setup() {
 
 	// Enable support for HTML5 markup.
 	add_theme_support( 'html5', array( 'comment-list', 'search-form', 'comment-form', ) );
+
+        if (frimi("site.private")) 
+           frimi_check_private();
 }
 endif; // frimi_setup
 add_action( 'after_setup_theme', 'frimi_setup' );
