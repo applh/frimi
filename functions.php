@@ -38,7 +38,7 @@ function frimi_setup() {
 	 *
 	 * @link http://codex.wordpress.org/Function_Reference/add_theme_support#Post_Thumbnails
 	 */
-	//add_theme_support( 'post-thumbnails' );
+	add_theme_support( 'post-thumbnails' );
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
@@ -115,3 +115,17 @@ require get_template_directory() . '/inc/customizer.php';
  * Load Jetpack compatibility file.
  */
 require get_template_directory() . '/inc/jetpack.php';
+
+
+/*
+ * APPLH CODE
+ */
+add_action('admin_menu', 'my_frimi_menu');
+
+function my_frimi_menu () {
+	add_theme_page('My Frimi Theme Options', 'Theme Options', 'edit_theme_options', 'frimi-theme-options', 'my_frimi_theme_options_page');
+}
+
+function my_frimi_theme_options_page () {
+   echo "<h1>HELLO WORLD</h1>";
+}
