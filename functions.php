@@ -84,8 +84,10 @@ function frimi_setup() {
 	// Enable support for HTML5 markup.
 	add_theme_support( 'html5', array( 'comment-list', 'search-form', 'comment-form', ) );
 
+        // add redirect if site is private
         if (frimi("site.private")) 
-           frimi_check_private();
+           add_action( 'template_redirect', 'frimi_check_private' );
+
 }
 endif; // frimi_setup
 add_action( 'after_setup_theme', 'frimi_setup' );
