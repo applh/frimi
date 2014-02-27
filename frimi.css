@@ -1,0 +1,66 @@
+body {
+max-width:800px;
+font-size:16px;
+margin:0 auto;
+}
+
+.site-header {
+min-height:120px;
+}
+
+.site-title a {
+text-decoration:none;
+font-size:2em;
+font-weight:900;
+}
+
+h2 {
+font-size:1.5em;
+font-weight:900;
+margin-top:1em;
+margin-bottom:1em;
+}
+
+.nav-menu li a {
+padding:.5em;
+}
+
+.nav-menu ul.sub-menu {
+background-color:#eeeeee;
+margin:.5em;
+}
+
+.nav-menu ul.sub-menu ul.sub-menu {
+margin:0;
+}
+
+.comments-area form {
+display:none;
+}
+
+.comments-area .form-allowed-tags {
+display:none;
+}
+
+.comments-area:hover form {
+display:block;
+}
+
+.widget-area {
+background-color:#eeeeee;
+padding:1em;
+}
+
+@media print {
+h2 {
+page-break-before:always;
+}
+
+.widget-area {
+display:none;
+}
+
+.edit-link {
+display:none;
+}
+}
