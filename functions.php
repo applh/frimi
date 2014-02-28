@@ -7,8 +7,10 @@
 
 global $Frimi;
 if (!is_array($Frimi)) {
+   $curdir= __DIR__;
    $Frimi = array(
       "site.private" => 1,
+      "frimi.dir" => $curdir,
       );
 }
 
@@ -20,6 +22,26 @@ if (! function_exists('frimi')):
          $res = $Frimi[$var];
       return $res;
    }
+endif;
+
+if (! function_exists('frimi_install')):
+   function frimi_install ($var) {
+      global $Frimi;
+      $curdir = frimi("frimi.dir");
+      $tabdir=array("$curdir/template");
+      foreach ($tabdir as $d => $dir2create) {
+         if (!is_dir($dir2create)) mkdir($dir2create, 0777);
+      }
+      $tabfile=array(
+         "$curdir/template/grid-10x10.php",
+         "$curdir/frimi.css",
+         );
+      foreach ($tabfile as $f => $file2create) {
+         if (!is_file($file2create)) touch($file2create);
+      }
+
+   }
+   //frimi_install();
 endif;
 
 if (! function_exists('frimi_check_private')):
@@ -161,3 +183,4 @@ function my_frimi_menu () {
 function my_frimi_theme_options_page () {
    echo "<h1>HELLO WORLD</h1>";
 }
+
