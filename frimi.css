@@ -66,10 +66,13 @@ display:none;
 }
 
 
+.grid-10x10 table {
+width:300px;
+}
 .grid-10x10 td .cell {
-min-height:50px;
-min-width:50px;
-margin:5px;
+height:20px;
+width:20px;
+margin:2px;
 border:1px #eeeeee solid;
 background-color:#dddddd;
 }
