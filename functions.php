@@ -185,3 +185,17 @@ function my_frimi_theme_options_page () {
    echo "<h1>HELLO WORLD</h1>";
 }
 
+function frimi_head() {
+    $themeuri=frimi('theme.uri');
+	$frimi_head=
+<<<FRIMIHEAD
+	<link rel="stylesheet" type="text/css" media="all" href="{$themeuri}/frimi.css">
+FRIMIHEAD;
+
+	echo $frimi_head;
+	
+};
+
+add_action('wp_head', 'frimi_head');
+
+

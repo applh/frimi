@@ -3,19 +3,6 @@
 Template Name: Grid 10x10
 */
 
-function frimi_head() {
-    $themeuri=frimi('theme.uri');
-	$frimi_head=
-<<<FRIMIHEAD
-	<link rel="stylesheet" type="text/css" media="all" href="{$themeuri}/frimi.css">
-FRIMIHEAD;
-
-	echo $frimi_head;
-	
-};
-
-add_action('wp_head', 'frimi_head');
-
 get_header(); 
 
 ?>
