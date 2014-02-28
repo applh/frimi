@@ -1,27 +1,49 @@
 <?php
-
 /*
-
 Template Name: Grid 10x10
-
 */
 
+function frimi_head() {
+    $themeuri=frimi('theme.uri');
+	$frimi_head=
+<<<FRIMIHEAD
+	<link rel="stylesheet" type="text/css" media="all" href="{$themeuri}/frimi.css">
+FRIMIHEAD;
 
-get_header(); ?>
+	echo $frimi_head;
+	
+};
 
+add_action('wp_head', 'frimi_head');
+
+get_header(); 
+
+?>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
-
+<div class="grid-10x10">
+	<table>
+		<tbody>
+<?php
+	for ($l = 0; $l < 10; $l++) {
+		echo '<tr>';
+		for ($c = 0; $c < 10; $c++) {
+			echo '<td>';
+			echo '<div class="cell"></div>';
+			echo '</td>';
+		}
+		echo '</tr>';
+	}
+?>
+		</tbody>
+	</table>
+</div>
 		<?php if ( have_posts() ) : ?>
 
 			<?php /* Start the Loop */ ?>
 			<?php while ( have_posts() ) : the_post(); ?>
 
 				<?php
-					/* Include the Post-Format-specific template for the content.
-					 * If you want to override this in a child theme, then include a file
-					 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-					 */
 					get_template_part( 'content', 'page' );
 				?>
 

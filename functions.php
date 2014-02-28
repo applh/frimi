@@ -10,7 +10,8 @@ if (!is_array($Frimi)) {
    $curdir= __DIR__;
    $Frimi = array(
       "site.private" => 1,
-      "frimi.dir" => $curdir,
+      "theme.dir" => $curdir,
+      "theme.uri" => get_template_directory_uri(),
       );
 }
 
@@ -27,7 +28,7 @@ endif;
 if (! function_exists('frimi_install')):
    function frimi_install ($var) {
       global $Frimi;
-      $curdir = frimi("frimi.dir");
+      $curdir = frimi("theme.dir");
       $tabdir=array("$curdir/template");
       foreach ($tabdir as $d => $dir2create) {
          if (!is_dir($dir2create)) mkdir($dir2create, 0777);
